@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products - Chalermchaichan</title>
+  <link rel="shortcut icon" href="IMG/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/AnimationLoading.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Navbar Global Style */
+    .navbar {
+      background: #fff;
+      transition: all 0.3s;
+      padding-top: 1rem;
+      /* ระยะด้านบน */
+      padding-bottom: 1rem;
+      /* ระยะด้านล่าง */
+      font-size: 1.1rem;
+      /* ขนาดตัวอักษร */
+    }
+
+    .navbar-brand {
+      color: #c62828 !important;
+      font-weight: bold;
+      font-size: 1.6rem;
+      /* โลโก้ใหญ่ขึ้น */
+    }
+
+    .nav-link {
+      position: relative;
+      margin-left: 20px;
+      font-weight: 500;
+      color: #333 !important;
+      font-size: 1.1rem;
+      /* ขยายตัวอักษรเมนู */
+      padding: 0.75rem 1rem;
+      /* เพิ่มพื้นที่รอบตัวอักษร */
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: linear-gradient(90deg, #c62828, #fbc02d);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #c62828 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Active menu highlight */
+    .nav-link.active {
+      color: #c62828 !important;
+      font-weight: bold;
+      border-bottom: 2px solid #c62828;
+    }
+
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(-45deg, #c62828, #fbc02d, #ff7043, #29b6f6);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #fff;
+      color: #c62828;
+      border-radius: 25px;
+      padding: 10px 25px;
+      transition: all 0.3s;
+    }
+
+    .hero .btn:hover {
+      background: #29b6f6;
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .section {
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .section h1 {
+      color: #c62828;
+      margin-bottom: 30px;
+    }
+
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 20px rgba(198, 40, 40, 0.4);
+    }
+
+    .product-card h4 {
+      color: #c62828;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading">
+    <span>🚀 Loading...</span>
+  </div>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="IMG/favicon.ico" alt="Logo" width="20%" height="20%" class="me-2">
+      <span class="fw-bold">Rocket</span>
+    </a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link active" href="products.html">Products</a></li>
+        <li class="nav-item"><a class="nav-link" href="manufacturing.html">Manufacturing</a></li>
+        <li class="nav-item"><a class="nav-link" href="pdpa.html">PDPA</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Hero Banner -->
+  <section class="hero d-flex align-items-center justify-content-center text-center">
+    <div class="overlay"></div>
+    <div class="content">
+      <h1 class="mb-3">Our Products</h1>
+      <p class="lead mb-4">
+        โรงงานผลิตของ บริษัท เฉลิมชัยชาญ จำกัด ได้มีการขยายตัวและเติบโตเรื่อยมาตลอดกว่า 40 ปี
+        ครอบคลุมอุตสาหกรรมหลากหลายประเภท
+      </p>
+      <a href="#products" class="btn btn-light btn-lg">📦 ดูผลิตภัณฑ์</a>
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      min-height: 70vh;
+      /* ลดความสูงลง */
+      position: relative;
+      background: linear-gradient(-45deg, #c62828, #fbc02d, #ff7043, #29b6f6);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      color: #fff;
+    }
+
+    .hero .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      /* เพิ่มเลเยอร์โปร่งใส */
+    }
+
+    .hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      padding: 20px;
+    }
+  </style>
+
+  <section id="products" class="section bg-light">
+    <div class="container">
+      <h1 class="mb-6">📦 <b>ผลิตภัณฑ์ของเรา</b></h1>
+      <div class="row g-4 align-items-stretch">
+        <!-- Product 1 -->
+        <div class="col-md-6">
+          <div class="product-card h-100 p-3 shadow-sm text-start d-flex flex-column">
+            <h4 class="text-danger fw-bold mb-3">📰 หมึกพิมพ์ฐานน้ำมัน (Off-set, Air-set & Coating)</h4>
+            <p class="text-muted flex-grow-1">
+              เหมาะสำหรับระบบพิมพ์ Off-set, Air-set และ Coating<br>
+              ใช้กับงานสื่อสิ่งพิมพ์ หนังสือพิมพ์ นิตยสาร และบรรจุภัณฑ์ที่มีสีสันสดใส สวยงาม
+              รวมถึงบรรจุภัณฑ์ประเภทกระดาษและโลหะ
+            </p>
+            <h6 class="fw-bold">คุณสมบัติเด่น:</h6>
+            <ul class="list-unstyled mb-3 flex-grow-1">
+              <li>✅ แห้งเร็ว</li>
+              <li>✅ สีสด</li>
+              <li>✅ ติดทนนาน</li>
+            </ul>
+            <h6 class="fw-bold">การใช้งาน:</h6>
+            <p class="text-muted">เหมาะกับงานบรรจุภัณฑ์ที่ต้องการความคมชัดสูง</p>
+            <div class="alert alert-light border-start border-danger mt-auto">
+              <strong>เคล็ดลับ:</strong> เลือกสูตรที่เหมาะกับวัสดุพิมพ์เพื่อผลลัพธ์ที่ดีที่สุด
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="col-md-6">
+          <div class="product-card h-100 p-3 shadow-sm text-start d-flex flex-column">
+            <h4 class="text-danger fw-bold mb-3">🎨 หมึกพิมพ์ฐานตัวทำละลาย (Gravure & Flexography)</h4>
+            <p class="text-muted flex-grow-1">
+              เหมาะสำหรับระบบพิมพ์ Gravure และ Flexography<br>
+              สามารถพิมพ์งานได้ทุกพื้นผิวพลาสติก ฟิล์ม เหมาะสำหรับงานเฟล็กซิเบิลแพคเกจจิ้ง
+            </p>
+            <h6 class="fw-bold">คุณสมบัติเด่น:</h6>
+            <ul class="list-unstyled mb-3 flex-grow-1">
+              <li>✅ การยึดเกาะดีเยี่ยม</li>
+              <li>✅ ทนทานต่อการเสียดสี</li>
+              <li>✅ สีสดชัด</li>
+            </ul>
+            <h6 class="fw-bold">การใช้งาน:</h6>
+            <p class="text-muted">เหมาะกับงานบรรจุภัณฑ์พลาสติก, ฟิล์ม, และวัสดุที่ต้องการความทนทานสูง</p>
+            <div class="alert alert-light border-start border-danger mt-auto">
+              <strong>เคล็ดลับ:</strong> เลือกสูตรที่เหมาะกับวัสดุพิมพ์เพื่อเพิ่มประสิทธิภาพสูงสุด
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="col-md-6">
+          <div class="product-card h-100 p-3 shadow-sm text-start d-flex flex-column">
+            <h4 class="text-danger fw-bold mb-3">🌱 หมึกพิมพ์ฐานน้ำ (Flexography)</h4>
+            <p class="text-muted flex-grow-1">
+              เหมาะสำหรับระบบพิมพ์ Flexography<br>
+              เป็นหมึกพิมพ์คุณภาพสูง เฉดสีเข้ม สวยงาม ทนทานต่อทุกสภาพการใช้งาน
+            </p>
+            <h6 class="fw-bold">คุณสมบัติเด่น:</h6>
+            <ul class="list-unstyled mb-3 flex-grow-1">
+              <li>✅ ปลอดภัยต่อสิ่งแวดล้อม</li>
+              <li>✅ แห้งเร็ว</li>
+              <li>✅ สีสดชัด</li>
+            </ul>
+            <h6 class="fw-bold">การใช้งาน:</h6>
+            <p class="text-muted">เหมาะกับงานบรรจุภัณฑ์กระดาษ, ฟิล์ม, และวัสดุที่ต้องการความเป็นมิตรต่อสิ่งแวดล้อม</p>
+            <div class="alert alert-light border-start border-danger mt-auto">
+              <strong>เคล็ดลับ:</strong> ใช้กับวัสดุที่ต้องการลดการใช้สารเคมี เพื่อความปลอดภัยและยั่งยืน
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="col-md-6">
+          <div class="product-card h-100 p-3 shadow-sm text-start d-flex flex-column">
+            <h4 class="text-danger fw-bold mb-3">♻️ หมึกพิมพ์ฐานน้ำ (Gravure & Flexography)</h4>
+            <p class="text-muted flex-grow-1">
+              เหมาะสำหรับระบบพิมพ์ Gravure และ Flexography<br>
+              เป็นนวัตกรรมใหม่เพื่อคุณภาพชีวิตและสุขภาพอนามัยของมนุษย์ เป็นมิตรต่อสิ่งแวดล้อม
+            </p>
+            <h6 class="fw-bold">คุณสมบัติเด่น:</h6>
+            <ul class="list-unstyled mb-3 flex-grow-1">
+              <li>✅ ปลอดภัยต่อสิ่งแวดล้อม</li>
+              <li>✅ การยึดเกาะดี</li>
+              <li>✅ สีสดชัด</li>
+            </ul>
+            <h6 class="fw-bold">การใช้งาน:</h6>
+            <p class="text-muted">เหมาะกับงานบรรจุภัณฑ์กระดาษ, ฟิล์ม, พลาสติก และวัสดุที่ต้องการความทนทานสูง</p>
+            <div class="alert alert-light border-start border-danger mt-auto">
+              <strong>เคล็ดลับ:</strong> เลือกสูตรที่เหมาะกับวัสดุพิมพ์ เพื่อความคงทนและคุณภาพสูงสุด
+            </div>
+          </div>
+        </div>
+
+        <!-- Commitment Section -->
+        <div class="col-12">
+          <div class="product-card h-100 p-3 shadow-sm text-start">
+            <h4 class="text-danger fw-bold mb-3">🏭 ความมุ่งมั่นของเรา</h4>
+            <p>
+              หมึกพิมพ์ของ บริษัท เฉลิมชัยชาญ จำกัด สามารถออกแบบสูตรการผลิตให้สอดคล้องกับเครื่องพิมพ์แต่ละเครื่อง
+              เพื่อให้เครื่องพิมพ์สามารถใช้งานหมึกพิมพ์ได้เต็มที่ คุ้มค่า และมีประสิทธิภาพสูงสุดในการพิมพ์
+              และได้ภาพพิมพ์เป็นไปตามคุณภาพที่ต้องการ
+            </p>
+            <p>
+              ด้วยความมุ่งมั่นและการทำงานร่วมกันอย่างใกล้ชิดของฝ่ายการตลาด ฝ่ายโรงงานผลิต และหน่วยเทคนิคบริการ
+              ทำให้สามารถเข้าถึงความต้องการของลูกค้าได้อย่างมีประสิทธิภาพ
+              สร้างความเชื่อมั่นและความพึงพอใจให้กับลูกค้าทั้งในคุณภาพของผลิตภัณฑ์และการบริการเสมอมา
+            </p>
+            <p>
+              บริษัทมีนโยบายการจัดเก็บสต๊อกวัตถุดิบสำรองทั้งในประเทศและต่างประเทศ ไม่น้อยกว่า 3 เดือนต่อรายการ
+              เพื่อให้สามารถผลิตและจัดส่งสินค้าได้ตามข้อตกลง แม้ในสภาวะขาดแคลน
+            </p>
+            <p>
+              🚚 บริษัทสามารถตอบสนองความต้องการของลูกค้าทุกราย ด้วยระบบการขนส่งที่มีประสิทธิภาพ
+              ไม่ว่าจะเป็นรถบรรทุกขนาดใหญ่ รถกระบะบรรทุก และรถยนต์สำรองสำหรับรองรับกรณีเร่งด่วน
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+  <!-- CTA Section -->
+  <section class="section bg-danger text-white text-center">
+    <h3>💡 อยากใช้สีของเรา?</h3>
+    <p>ติดต่อเพื่อปรึกษาเรื่องการเลือกสีได้ทันที</p>
+    <a href="#" class="btn btn-light mt-2">📩 ติดต่อเรา</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    copyright © 2026<br> chalermchaichan.co.th<br> all rights reserve
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/AnimationLoading.js"></script>
+</body>
+
+</html>

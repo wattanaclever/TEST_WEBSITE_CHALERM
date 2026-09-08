@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PDPA - Chalermchaichan</title>
+  <link rel="shortcut icon" href="IMG/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/AnimationLoading.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Navbar Global Style */
+    .navbar {
+      background: #fff;
+      transition: all 0.3s;
+      padding-top: 1rem;
+      /* ระยะด้านบน */
+      padding-bottom: 1rem;
+      /* ระยะด้านล่าง */
+      font-size: 1.1rem;
+      /* ขนาดตัวอักษร */
+    }
+
+    .navbar-brand {
+      color: #c62828 !important;
+      font-weight: bold;
+      font-size: 1.6rem;
+      /* โลโก้ใหญ่ขึ้น */
+    }
+
+    .nav-link {
+      position: relative;
+      margin-left: 20px;
+      font-weight: 500;
+      color: #333 !important;
+      font-size: 1.1rem;
+      /* ขยายตัวอักษรเมนู */
+      padding: 0.75rem 1rem;
+      /* เพิ่มพื้นที่รอบตัวอักษร */
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: linear-gradient(90deg, #c62828, #fbc02d);
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover {
+      color: #c62828 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Active menu highlight */
+    .nav-link.active {
+      color: #c62828 !important;
+      font-weight: bold;
+      border-bottom: 2px solid #c62828;
+    }
+
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(-45deg, #c62828, #fbc02d, #ff7043, #29b6f6);
+      background-size: 400% 400%;
+      animation: gradientMove 12s ease infinite;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .hero .btn {
+      background: #fff;
+      color: #c62828;
+      border-radius: 25px;
+      padding: 10px 25px;
+      transition: all 0.3s;
+    }
+
+    .hero .btn:hover {
+      background: #29b6f6;
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    .section {
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    .section h1 {
+      color: #c62828;
+      margin-bottom: 30px;
+    }
+
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 6px 20px rgba(198, 40, 40, 0.4);
+    }
+
+    .product-card h4 {
+      color: #c62828;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Loading Overlay -->
+  <div id="loading">
+    <span>🚀 Loading...</span>
+  </div>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="IMG/favicon.ico" alt="Logo" width="20%" height="20%" class="me-2">
+        <span class="fw-bold">Rocket</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="manufacturing.html">Manufacturing</a></li>
+          <li class="nav-item"><a class="nav-link active" href="pdpa.html">PDPA</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero d-flex flex-column justify-content-center align-items-center text-center">
+    <h2 class="fw-bold mb-3">PDPA Policy</h2>
+    <p class="lead mb-6">นโยบายความเป็นส่วนตัวสำหรับคู่ธุรกิจและผู้เกี่ยวข้อง
+
+      บริษัท เฉลิมชัยชาญ จำกัด เคารพสิทธิความเป็นส่วนตัวของคู่ธุรกิจซึ่งเป็นบุคคลธรรมดา
+      เพื่อให้เกิดความมั่นใจว่าท่านได้รับความคุ้มครองข้อมูลส่วนบุคคล จึงได้จัดทำนโยบายความเป็นส่วนตัวฉบับนี้ขึ้น
+      เพื่อแจ้งให้ทราบถึงรายละเอียดที่เกี่ยวข้องกับการเก็บรวบรวม การใช้ และการเปิดเผย ตลอดถึงการลบและทำลาย
+      ข้อมูลส่วนบุคคลของท่านทั้งช่องทางออนไลน์ รวมถึงช่องทางอื่นๆ ตามที่กฎหมายคุ้มครองข้อมูลส่วนบุคคลกำหนด ดังนี้</p>
+    <a href="#pdpa-section" class="btn btn-light btn-lg">อ่านนโยบาย</a>
+  </section>
+
+  <!-- PDPA Section -->
+  <section id="pdpa-section" class="section bg-light">
+    <div class="container">
+      <h1 class="mb-5">นโยบาย PDPA</h1>
+      <div class="row g-4">
+        <!-- 🔽 ใส่ Card 9 หัวข้อต่างๆ -->
+        <!-- 1 Purpose -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>📑 1.วัตถุประสงค์การประมวลผลข้อมูลส่วนบุคคล</h4>
+            <p class="text-muted">การประมวลผลข้อมูลส่วนบุคคล...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#purposeModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 2 Data Collection -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>👤 2.ข้อมูลส่วนบุคคลที่เก็บรวบรวม</h4>
+            <p class="text-muted">ประเภทข้อมูลที่เก็บรวบรวม...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#dataModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 3 Cookies -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>🍪 3.การใช้คุกกี้</h4>
+            <p class="text-muted">การใช้คุกกี้เพื่อเก็บข้อมูล...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#cookiesModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 4 Consent -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>✅ 4.การขอความยินยอมและผลกระทบที่เป็นไปได้จากการถอนความยินยอม</h4>
+            <p class="text-muted">สิทธิในการให้และถอนความยินยอม...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#consentModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 5 Retention -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>📂 5.ระยะเวลาในการเก็บรักษาข้อมูลส่วนบุคคล</h4>
+            <p class="text-muted">ระยะเวลาการเก็บข้อมูลส่วนบุคคล...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#retentionModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 6 Disclosure -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>📤 6.การเปิดเผยข้อมูลส่วนบุคคลให้บุคคลอื่น</h4>
+            <p class="text-muted">การเปิดเผยข้อมูลแก่บุคคลอื่น...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#disclosureModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 7 Transfer -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>🌍 7.การส่งหรือโอนข้อมูลส่วนบุคคลไปต่างประเทศ</h4>
+            <p class="text-muted">การส่งข้อมูลไปต่างประเทศ...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#transferModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 8 Security -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>🔒 8.มาตรการความปลอดภัยสำหรับข้อมูลส่วนบุคคล</h4>
+            <p class="text-muted">มาตรการรักษาความปลอดภัยข้อมูล...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#securityModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+
+        <!-- 9 Rights -->
+        <div class="col-md-4">
+          <div class="product-card h-100 text-start">
+            <h4>⚖️ 9.สิทธิเกี่ยวกับข้อมูลส่วนบุคคลของท่าน</h4>
+            <p class="text-muted">สิทธิในการเข้าถึง แก้ไข ลบ...</p>
+            <button class="btn btn-danger btn-sm mt-2" data-bs-toggle="modal"
+              data-bs-target="#rightsModal">อ่านเพิ่มเติม</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- purposeModal -->
+  <div class="modal fade" id="purposeModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            1. วัตถุประสงค์การประมวลผลข้อมูล
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>1.1</b> เพื่อใช้ในการดำเนินการตามคำขอของคู่ธุรกิจก่อนเข้าทำสัญญา
+              หรือเพื่อปฏิบัติตามสัญญาซึ่งคู่ธุรกิจเป็นคู่สัญญากับบริษัท เฉลิมชัยชาญ จำกัด</li>
+
+            <li><b>1.2</b> เพื่อประโยชน์โดยชอบด้วยกฎหมายของบริษัทหรือบุคคลภายนอก:
+              <ul>
+                <li>(1) การจัดซื้อจัดจ้าง ตรวจรับ และบริหารจัดการความสัมพันธ์ ตรวจสอบและประเมินการทำงานตามสัญญา</li>
+                <li>(2) การบริหารจัดการภายใน เช่น การพัฒนาสินค้า/บริการ การวิจัย การตรวจสอบและป้องกันการฉ้อโกง</li>
+                <li>(3) การรักษาความปลอดภัย เช่น การเข้าสถานที่ การเข้าระบบ Login และระบบสารสนเทศ</li>
+                <li>(4) การแจ้งข่าวสารและสิทธิประโยชน์ผ่านช่องทางต่าง ๆ เช่น Email, แอปพลิเคชัน, โซเชียลมีเดีย</li>
+                <li>(5) การใช้สิทธิเรียกร้องทางกฎหมาย</li>
+              </ul>
+            </li>
+
+            <li><b>1.3</b> เพื่อป้องกันและระงับอันตรายต่อชีวิต ร่างกาย หรือสุขภาพ เช่น การติดต่อในกรณีฉุกเฉิน
+              การควบคุมโรคติดต่อ</li>
+            <li><b>1.4</b> เพื่อให้สามารถปฏิบัติตามกฎหมาย กฎระเบียบ และคำสั่งของผู้มีอำนาจตามกฎหมาย</li>
+            <li><b>1.5</b> เพื่อการปฏิบัติหน้าที่เพื่อประโยชน์สาธารณะ หรือการใช้อำนาจที่รัฐมอบให้</li>
+            <li><b>1.6</b> กรณีที่ท่านให้ความยินยอม บริษัทจะประมวลผลข้อมูลตามวัตถุประสงค์ที่กำหนดไว้ในแต่ละความยินยอม
+              เช่น:
+              <ul>
+                <li>(1) การจัดกิจกรรมเพิ่มเติม โดยบริษัทจะแจ้งและขอความยินยอมใหม่เป็นครั้งคราว</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- dataModal -->
+  <div class="modal fade" id="dataModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            2. ข้อมูลส่วนบุคคลที่เก็บรวบรวม
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>2.1</b> เราเก็บรวบรวมข้อมูลส่วนบุคคลของท่านเมื่อคู่ธุรกิจติดต่อ ขายสินค้าหรือการให้บริการใด ๆ แก่เรา
+              เช่น</li>
+
+            <ul>
+              <li>(1) ข้อมูลนามบัตร เช่น ชื่อ-นามสกุล ตำแหน่งงาน เบอร์โทรศัพท์ E-mail ฯลฯ</li>
+              <li>(2) ข้อมูลที่ใช้ในการยืนยันตัวตนได้ เช่น ชื่อ-นามสกุล เลขที่และข้อมูลบนบัตรประชาชน รูปถ่าย
+                และข้อมูลในรูปแบบต่างๆ ที่ใช้ในการระบุตัวตน</li>
+              <li>(3) ข้อมูลเกี่ยวกับการปฏิบัติงานของท่าน เช่น ข้อมูลประวัติและการปฏิบัติงาน ข้อมูลเกี่ยวกับการจ้างงาน
+                และข้อมูลเพื่อการบริหารจัดการด้านความปลอดภัย อาชีวอนามัย รวมทั้งข้อมูลบัญชีและการเงินเช่น ค่าตอบแทน
+                หมายเลขบัญชีธนาคาร</li>
+            </ul>
+            </li>
+
+            <li><b>2.2</b> เมื่อท่านเข้ามาในบริเวณพื้นที่บริษัท เราอาจเก็บภาพของท่านโดยใช้กล้องวงจรปิด (CCTV)
+              ทั้งนี้เราไม่ได้เก็บข้อมูลเสียงผ่านทางกล้องวงจรปิดและเราจะติดป้ายแจ้งให้ท่านทราบว่าทางบริษัทมีการใช้กล้องวงจรปิดในบริเวณพื้นที่ของบริษัท
+            </li>
+            <li><b>2.3</b> เมื่อท่านติดต่อเราหรือร่วมกิจกรรมใดๆ กับบริษัททางบริษัทอาจเก็บรวบรวมข้อมูลส่วนบุคคล ดังนี้
+            </li>
+            <ul>
+              <li>(1) ข้อมูลส่วนตัว เช่น ชื่อ - นามสกุล วันเดือนปีเกิด รูปถ่าย หมายเลขบัตรประชาชน หมายเลขใบขับขี่
+                และหมายเลขหนังสือเดินทาง</li>
+              <li>(2) ข้อมูลที่ใช้ในการยืนยันตัวตนได้ เช่น ชื่อ - นามสกุล เลขที่และข้อมูลบนบัตรประชาชน
+                รูปถ่ายและข้อมูลในรูปแบบต่างๆในการระบุตัวตน</li>
+              <li>(3) ข้อมูลเกี่ยวกับการปฏิบัติงานของท่าน เช่น ข้อมูลประวัติและการปฏิบัติงาน ข้อมูลเกี่ยวกับการจ้างงาน
+                และข้อมูลเพื่อการบริหารจัดการด้านความปลอดภัยอาชีวอนามัย และสภาพแวดล้อมในการทำงานของท่าน
+                รวมทั้งข้อมูลบัญชีและการเงินเช่น ค่าตอบแทน หมายเลขบัญชีธนาคาร
+            </ul>
+            </li>
+            <li>
+              <b>2.4</b>
+              เราอาจะมีความจำเป็นต้องเก็บรวบรวมและประมวลผลข้อมูลส่วนบุคคลชนิดพิเศษตามที่กฎหมายคุ้มครองข้อมูลส่วนบุคคลกำหนดเพื่อใช้งานตามวัตถุ
+              ประสงค์ที่เราแจ้งไว้ใน นโยบายความเป็นส่วนตัวนี้ เช่น
+            </li>
+            <ul>
+              <li>(1) เมื่อเราจำเป็นต้องใช้ข้อมูลดังกล่าวเพื่อประโยชน์ในการรักษาความปลอดภัยของเรา เช่น
+                ข้อมูลชีวภาพ(เช่นข้อมูลใบหน้าสำหรับใช้ในการทำลายนิ้วมือ) เพื่อระบุตัวตน</li>
+              <li>(2) ในบางกรณี เราอาจะเก็บข้อมูลส่วนบุคคลชนิดพิเศษ เช่น
+                เราอาจะจำเป็นต้องใช้บัตรประชาชนซึ่งมีข้อมูลศาสนาของท่านเพื่อใช้ในการยืนยันตัวตนของท่านหรือดำเนิน
+                การทางภาษี</li>
+              <li>(3)ข้อมูลสุขภาพ เช่น ข้อมูลการแพ้อาหาร เพื่อใช้ในการดำเนินการกิจกรรมต่าง ๆ</li>
+            </ul>
+            <li>
+              <b>2.5</b>
+              ในกรณีที่จำเป็นเราจะประมวลผลข้อมูลส่วนบุคคลชนิดพิเศษของท่านโดยได้รับความยินยอมโดยชัดแจ้งจากท่านหรือเพื่อวัตถุประสงค์อื่นตามที่กฎหมาย
+              กำหนดไว้เท่านั้นทั้งนี้เราจะใช้ความพยายามอย่างดีที่สุดในการจัดให้มีมาตรการรักษาความปลอดภัยที่เพียงพอเพื่อปกป้องคุ้มครองข้อมูลส่วนบุคคลชนิดพิเศษของท่าน
+            </li>
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- cookiesModal -->
+  <div class="modal fade" id="cookiesModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            3. การใช้คุกกี้
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li>เรามีการใช้คุกกี้เพื่อเก็บรวบรวมข้อมูลส่วนบุคคล ตามที่กำหนดไว้ตาม นโยบายการใช้คุกกี้</li>
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- consentModal -->
+  <div class="modal fade" id="consentModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            4. การขอความยินยอมและผลกระทบที่เป็นไปได้จากการถอนความยินยอม
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>4.1</b>
+              ในกรณีที่เราเก็บรวบรวมและประมวลผลข้อมูลส่วนบุคคลโดยอาศัยความยินยอมของท่านท่านมีสิทธิที่จะถอนความยินยอมของท่านที่ให้ไว้กับเราได้ตลอดเวลาซึ่งการถอนความยินยอมนี้จะไม่ส่งผลกระทบต่อการเก็บรวบรวม
+              ใช้ เปิดเผยหรือประมวลผลข้อมูลส่วนบุคคลที่ท่านได้ให้ความยินยอมไปแล้ว </li>
+            <li><b>4.2</b>
+              หากท่านถอนความยินยอมที่ได้ให้ไว้กับเราหรือปฏิเสธไม่ให้ข้อมูลบางอย่างอาจส่งผลให้เราไม่สามารถดำเนินการเพื่อบรรลุวัตถุประสงค์บางส่วนหรือทั้งหมดตามที่ระบุไว้ใน
+              นโยบายความเป็นส่วนตัวนี้ได้</li>
+
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- retentionModal -->
+  <div class="modal fade" id="retentionModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            5. ระยะเวลาในการเก็บรักษาข้อมูลส่วนบุคคล
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>5.1</b>
+              เราจะเก็บข้อมูลส่วนบุคคลของท่านในระยะเวลาที่จำเป็นเพื่อให้บรรลุวัตถุประสงค์ตามประเภทข้อมูลส่วนบุคคลแต่ละประเภทเว้นแต่กฎหมายจะอนุญาตให้มีระยะเวลาการเก็บรักษาที่นานขึ้น
+              ในกรณีที่ไม่สามารถระบุระยะเวลาการเก็บรักษาข้อมูลส่วนบุคคลได้ชัดเจนเราจะเก็บรักษาข้อมูลไว้ตามระยะเวลาที่อาจคาดหมายได้ตามมาตรฐานของการเก็บรวบรวม
+              (เช่นอายุความตามกฎหมายทั่วไปสูงสุด 10 ปี)</li>
+            <li><b>5.2</b> กรณีกล้องโทรทัศน์วงจรปิด เราจะเก็บข้อมูล</li>
+            <ul>
+              <li>(1) ในสถานการณ์ปกติ ข้อมูลส่วนบุคคลของท่านอาจถูกเก็บไว้เป็นเวลา 30 วัน</li>
+            </ul>
+            <ul>
+              <li>
+                (2)ในกรณีจำเป็นเช่นกรณีที่จำเป็นต้องใช้เป็นหลักฐานในการสืบสวนสอบสวนหรือการดำเนินคดีหรือกรณีที่เจ้าของข้อมูลส่วนบุคคลร้องขอข้อมูลส่วนบุคคลอาจถูกเก็บรักษาไว้เกินกว่า
+                30 วันและบริษัทจะดำเนินการลบข้ออมูลดังกล่าวอย่างปลอดภัยเมื่อเสร็จสิ้นวัตถุประสงค์นั้น ๆ แล้ว</li>
+            </ul>
+            <li><b>5.3</b>
+              เราจัดให้มีระบบการตรวจสอบเพื่อดำเนินการลบหรือทำลายข้อมูลส่วนบุคคลเมื่อพ้นกำหนดระยะเวลาการเก็บรักษาหรือที่ไม่เกี่ยวข้องหรือเกินความจำเป็นตามวัตถุประสงค์ในการเก็บรวบรวมข้อมูลส่วนบุคคลนั้นเราจัดให้มีระบบการตรวจสอบเพื่อดำเนินการลบหรือทำลายข้อมูลส่วนบุคคลเมื่อพ้นกำหนดระยะเวลาการเก็บรักษาหรือที่ไม่เกี่ยวข้องหรือเกินความจำเป็นตามวัตถุประสงค์ในการเก็บรวบรวมข้อมูลส่วนบุคคลนั้น
+            </li>
+            <li><b>5.4</b>
+              กรณีที่เราใช้ข้อมูลส่วนบุคคลของท่านโดยขอความยินยอมจากท่านเราจะประมวลผลข้อมูลส่วนบุคคลดังกล่าวจนกว่าท่านจะแจ้งขอยกเลิกความยินยอมและเราดำเนินการตามคำขอของท่านเสร็จสิ้นแล้ว
+              อย่างไรก็ดีเราจะยังเก็บข้อมูลส่วนบุคคลของท่านเท่าที่จำเป็นสำหรับบันทึกเป็นประวัติว่าท่านเคยยกเลิกความยินยอมเพื่อให้เราสามารถตอบสนองต่อคำขอของท่านในอนาคตได้
+            </li>
+
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- disclosureModal -->
+  <div class="modal fade" id="disclosureModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            6. การเปิดเผยข้อมูลส่วนบุคคลให้บุคคลอื่น
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>6.1</b> เราเปิดเผยและแบ่งปันข้อมูลส่วนบุคคลของท่านกับ</li>
+            <ul>
+              <li>
+                (1) บริษัทในกลุ่มตามเอกสารแนบท้าย</li>
+              <li>(2) บุคคลและนิติบุคคลอื่นที่ไม่ได้เป็นบริษัทในกลุ่มของบริษัท เฉลิมชัยชาญ จำกัด
+                (“บุคคลอื่น”)เพื่อบรรลุวัตถุประสงค์การเก็บรวบรวมและประมวลผลข้อมูลส่วนบุคคลตามที่ระบุไว้ในนโยบายความเป็นส่วนตัวนี้
+                เช่นผู้แทนจำหน่าย ผู้ให้บริการด้านการขนส่ง (เช่น ไปรษณีย์) ผู้ให้บริการเกี่ยวกับธุรกรรมและการเงิน (เช่น
+                ธนาคารบริษัทรับชำระเงินแทน) ผู้ให้บริการทางด้านเทคโนโลยี (เช่น ระบบคลาวด์ บริการส่งเอสเอ็มเอส) บริการ
+                dataanalytics ผู้ให้บริการจัดทำโปรแกรมและระบบไอทีต่าง ๆ ผู้ตรวจสอบ บริษัทประกัน
+                ที่ปรึกษาหน่วยงานของรัฐ(เช่นกรมสรรพากร)และบุคคลอื่นที่จำเป็นเพื่อให้เราสามารถดำเนินธุรกิจและให้บริการแก่ท่าน
+                รวมถึงดำเนินการใด
+                ๆตามวัตถุประสงค์การเก็บรวบรวมและประมวลผลข้อมูลส่วนบุคคลตามที่ระบุไว้ในนโยบายความเป็นส่วนตัวนี้</li>
+            </ul>
+            <li><b>6.2</b>
+              เราจะกำหนดให้ผู้ที่ได้รับข้อมูลจากเรามีมาตรการปกป้องข้อมูลของท่านอย่างเหมาะสมและประมวลผลข้อมูลส่วนบุคคลดังกล่าวเท่าที่จำเป็นเท่านั้นและดำเนินการเพื่อป้องกันไม่ให้ใช้หรือเปิดเผยข้อมูลส่วนบุคคลโดยปราศจากอำนาจโดยมิชอบ
+            </li>
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- transferModal -->
+  <div class="modal fade" id="transferModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            7. การส่งหรือโอนข้อมูลส่วนบุคคลไปต่างประเทศ
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>7.1</b>
+              ทางเราอาจส่งหรือโอนข้อมูลส่วนบุคคลของท่านไปยังบริษัทในเครือหรือบุคคลอื่นในต่างประเทศในกรณีที่จำเป็นเพื่อการปฏิบัติตามสัญญาซึ่งท่านเป็นคู่สัญญาหรือเป็นการกระทำตามสัญญาระหว่างเรากับบุคคลหรือนิติบุคคลอื่นเพื่อประโยชน์ของท่านหรือเพื่อใช้ในการดำเนินการตามคำขอของท่านก่อนเข้าทำสัญญาหรือเพื่อป้องกันหรือระงับอันตรายต่อชีวิต
+              ร่างกาย หรือสุขภาพของท่านหรือบุคคลอื่น
+              เพื่อปฏิบัติตามกฎหมายหรือเป็นการจำเป็นเพื่อดำเนินภารกิจเพื่อประโยชน์สาธารณะที่สำคัญ</li>
+            <li><b>7.2</b>
+              ทางเราอาจเก็บข้อมูลของท่านบนคอมพิวเตอร์เซิร์ฟเวอร์หรือคลาวด์ที่ให้บริการโดยบุคคลอื่นและอาจใช้โปรแกรมหรือแอปพลิเคชันของบุคคลอื่นในรูปแบบของการให้บริการซอฟท์แวร์สำเร็จรูปและรูปแบบของการให้บริการแพลตฟอร์มสำเร็จรูปในการประมวลผลข้อมูลส่วนบุคคลของท่านแต่เราจะไม่อนุญาตให้บุคคลที่ไม่เกี่ยวข้องสามารถเข้าถึงข้อมูลส่วนบุคคลได้
+              และจะกำหนดให้บุคคลอื่นเหล่านั้นต้องมีมาตรการคุ้มครองความมั่นคงปลอดภัยที่เหมาะสม</li>
+            <li><b>7.3</b>
+              ในกรณีที่มีการส่งข้อมูลส่วนบุคคลของท่านไปยังต่างประเทศเราจะปฏิบัติตามกฎหมายคุ้มครองข้อมูลส่วนบุคคและใช้มาตรการที่เหมาะสมเพื่อทำให้มั่นใจได้ว่าข้อมูลส่วนบุคคลของท่านจะได้รับการคุ้มครองและท่านสามารถใช้สิทธิที่เกี่ยวข้องกับข้อมูลส่วนบุคคลของท่านได้ตามกฎหมายรวมถึงเราจะกำหนดให้ผู้ที่ได้รับข้อมูลมีมาตรการปกป้องข้อมูลของท่านอย่างเหมาะสมและประมวลผลข้อมูลส่วนบุคคลดังกล่าวเท่าที่จำเป็นเท่านั้นและดำเนินการเพื่อป้องกันไม่ให้บุคคลอื่นใช้หรือเปิดเผยข้อมูลส่วนบุคคลโดยปราศจากอำนาจโดยมิชอบ
+            </li>
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- securityModal -->
+  <div class="modal fade" id="securityModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            8. มาตรการความปลอดภัยสำหรับข้อมูลส่วนบุคคล
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>8.1</b>
+              ความปลอดภัยของข้อมูลส่วนบุคคลของท่านเป็นสิ่งสำคัญสำหรับเราและเราได้นำมาตรฐานความปลอดภัยทางเทคนิคและการบริหารที่เหมาะสมมาใช้เพื่อปกป้องข้อมูลส่วนบุคคลจากการสูญหาย
+              การเข้าถึงการใช้หรือการเปิดเผยโดยไม่ได้รับอนุญาต การใช้งานในทางที่ผิดการดัดแปลงเปลี่ยนแปลง
+              และการทำลายโดยใช้เทคโนโลยีและขั้นตอนการรักษาความปลอดภัย เช่น
+              การเข้ารหัสและการจำกัดการเข้าถึงเพื่อให้มั่นใจว่าบุคคลที่ได้รับอนุญาตเท่านั้นที่เข้าถึงข้อมูลส่วนบุคคลของท่านและบุคคลเหล่านี้ได้รับการฝึกอบรมเกี่ยวกับความสำคัญของการปกป้องข้อมูลส่วนบุคคล
+            </li>
+            <li><b>8.2</b> เราจัดให้มีมาตรการรักษาความปลอดภัยที่เหมาะสม เพื่อป้องกันการสูญหาย เข้าถึง ใช้ เปลี่ยนแปลง
+              แก้ไขเปิดเผยข้อมูลส่วนบุคคลจากผู้ที่ไม่มีสิทธิหรือหน้าที่ที่เกี่ยวข้องกับข้อมูลส่วนบุคคลนั้นและจะจัดให้มีการทบทวนมาตรการดังกล่าวเมื่อมีความจำเป็นหรือเมื่อเทคโนโลยีเปลี่ยนแปลงไปเพื่อให้มีประสิทธิภาพในการรักษาความปลอดภัยที่เหมาะสม
+            </li>
+          </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- rightsModal -->
+  <div class="modal fade" id="rightsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius:20px; overflow:hidden;">
+        <!-- Header -->
+        <div class="modal-header text-white" style="background: linear-gradient(90deg, #c62828, #fbc02d);">
+          <h5 class="modal-title fw-bold">
+            9. สิทธิเกี่ยวกับข้อมูลส่วนบุคคลของท่าน
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <!-- Body -->
+        <div class="modal-body text-start p-4" style="background-color:#fff; font-size:1.05rem; line-height:1.8;">
+          <ul style="padding-left:20px;">
+            <li><b>9.1</b> ท่านมีสิทธิตามกฎหมายคุ้มครองข้อมูลส่วนบุคคล สรุปดังนี้</li>
+            <ul>
+              <li>
+                (1) ถอนความยินยอมที่ท่านได้ให้ไว้กับบริษัทในการประมวลผลข้อมูลส่วนบุคคลของท่าน</li>
+
+              <li> (2) ขอดูและคัดลอกข้อมูลส่วนบุคคลของท่าน หรือขอให้เปิดเผยที่มาของข้อมูลส่วนบุคคลของท่าน</li>
+            </ul>
+        </div>
+        <!-- Footer -->
+        <div class="modal-footer" style="background-color:#fafafa; border-top:1px solid #eee;">
+          <button type="button" class="btn btn-outline-danger rounded-pill px-4" data-bs-dismiss="modal">ปิด</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    copyright © 2026<br> chalermchaichan.co.th<br> all rights reserve
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/AnimationLoading.js"></script>
+</body>
+
+</html>
